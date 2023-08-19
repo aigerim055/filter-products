@@ -18,7 +18,14 @@ export default function FilterProducts() {
     const dispatch = useDispatch()
 
 
-
+    const handleChange1 = (e) => {
+        setValue([Number(e.target.value), value[1]])
+        dispatch(getProducts(value))
+    };
+    const handleChange2 = (e) => {
+        setValue([value[0], Number(e.target.value)])
+        dispatch(getProducts(value))
+    };
 
 
     return (
@@ -39,7 +46,7 @@ export default function FilterProducts() {
                     <Input
                         placeholder="Type in here…"
                         value={value[0]}
-                        onChange={(e) => setValue([Number(e.target.value), value[1]])}
+                        onChange={(e) => handleChange1(e)}
                         // variant="soft"
                     />
                 </Box>
@@ -48,7 +55,7 @@ export default function FilterProducts() {
                     <Input
                         placeholder="Type in here…"
                         value={value[1]}
-                        onChange={(e) => setValue([value[0], Number(e.target.value)])}
+                        onChange={(e) => handleChange2(e)}
                         // variant="soft"
                     />
                 </Box>
